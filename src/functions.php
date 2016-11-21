@@ -80,4 +80,17 @@ function EncodeUser($log, $pwd){
 }
 
 
+<?php
+//manage the emoticons
+function smileys($text) {
+  $smileys = array(":)",";)","^^",":@",":'(",":p",":(");   
+  $paths = array("./emoticons/smiley.png","./emoticons/wink.png","./emoticons/content.png","./emoticons/angry.gif","./emoticons/pleure.png","./emoticons/tongue.png","./emoticons/triste.png");
+  for($i=0;$i<count($smileys);$i++) {
+    $text = str_replace($smileys[$i],'<img  src='.$paths[$i].'>',$text);
+    }
+  return $text ;
+}
+?>
+
+
  ?>

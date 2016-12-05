@@ -32,14 +32,16 @@ $action = $_POST['action'];
 if($action == "Signin"){
   if(ValidUser($id, $pass) && !IsConnected($id)){
     GetConnected($id);
-    session_start();
-    $_SESSION['login'] = $id;
-    $_SESSION['password'] = $pass;
+    //echo "hourra";
+    //session_start();
+    //$_SESSION['login'] = $id;
+    //$_SESSION['password'] = $pass;
     //echo '<meta http-equiv="refresh" content="0;URL=error.php">';
     exit();
 
   } else {
     //echo '<meta http-equiv="refresh" content="0;URL=../index.php">';
+    //echo "bah nan";
     exit();
     // incorporer valeur d'erreur.
     // pouet

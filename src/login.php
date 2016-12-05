@@ -33,14 +33,14 @@ if($action == "Signin"){
   if(ValidUser($id, $pass) && !IsConnected($id)){
     GetConnected($id);
     //echo "hourra";
-    //session_start();
-    //$_SESSION['login'] = $id;
-    //$_SESSION['password'] = $pass;
-    //echo '<meta http-equiv="refresh" content="0;URL=error.php">';
+    session_start();
+    $_SESSION['login'] = $id;
+    $_SESSION['password'] = $pass;
+    echo '<meta http-equiv="refresh" content="0;URL=chat.php">';
     exit();
 
   } else {
-    //echo '<meta http-equiv="refresh" content="0;URL=../index.php">';
+    echo '<meta http-equiv="refresh" content="0;URL=../index.php">';
     //echo "bah nan";
     exit();
     // incorporer valeur d'erreur.
@@ -50,13 +50,13 @@ if($action == "Signin"){
 } else {
   if(!ExistUser($id)){
     EncodeUser($id, $pass);
-    //echo '<meta http-equiv="refresh" content="0;URL=../index.php?id=signin">';
+    echo '<meta http-equiv="refresh" content="0;URL=../index.php?id=signin">';
     // incorporer message succes.
-    echo "ouahou ca marhce";
+    //echo "ouahou ca marhce";
 
   } else {
-    echo "t'existe banane;";
-    //echo '<meta http-equiv="refresh" content="0;URL=../index.php?id=register">';
+    //echo "t'existe banane;";
+    echo '<meta http-equiv="refresh" content="0;URL=../index.php?id=register">';
   }
 }
 

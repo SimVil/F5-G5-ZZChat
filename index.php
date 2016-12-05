@@ -72,6 +72,8 @@ body marker :
         $id = $_GET['id'];
 
       }
+       
+      echo $id;
       
 
       switch($id){

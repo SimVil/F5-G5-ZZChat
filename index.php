@@ -27,11 +27,7 @@ To avoid loading issues, js files are included at the end of the document
   <title> ZZChat </title>
   <link rel="stylesheet" href="static/css/bootstrap.css">
   <link rel="stylesheet" href="static/css/stylesheet.css">
-<<<<<<< HEAD
-  <meta charset="UTF-8" >
-=======
   <meta charset="UTF-8">
->>>>>>> connection
 
 </head>
 
@@ -71,20 +67,22 @@ body marker :
       if(isset($_GET['id'])){
         $id = $_GET['id'];
 
-      }
-      
+      }      
 
       switch($id){
         case 'register':
           include($register);
+          echo "1";
           break;
 
         case 'signin':
           include($signin);
+          echo "2";
           break;
 
         default:
           include($signin);
+          echo "default";
           break;
 
       }

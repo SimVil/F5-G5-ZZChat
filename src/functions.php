@@ -132,11 +132,11 @@ function EncodeUser($log, $pwd){
     $result = true;
 
   } else {
-	if(array_search($log, $arr) === false){
-		array_push($arr, array("login" => "$log", "pass" => "$coded_pwd"));
-		$result = true;
+  	if(array_search($log, $arr) === false){
+  		array_push($arr, array("login" => "$log", "pass" => "$coded_pwd"));
+  		$result = true;
 
-	}
+  	}
 
   }
 

@@ -27,6 +27,7 @@ To avoid loading issues, js files are included at the end of the document
   <title> ZZChat </title>
   <link rel="stylesheet" href="static/css/bootstrap.css">
   <link rel="stylesheet" href="static/css/stylesheet.css">
+  <meta charset="UTF-8" >
 
 </head>
 
@@ -67,6 +68,7 @@ body marker :
         $id = $_GET['id'];
 
       }
+      
 
       switch($id){
         case 'register':

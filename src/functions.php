@@ -3,6 +3,7 @@
 
 /* --------------------------------------------------------------------
  * FILE : functions.php
+ * stands for all the short php functions we will use over the website
  *
  * Author : Amin, Simon
  * ------------------------------------------------------------------ */
@@ -145,6 +146,7 @@ function EncodeUser($log, $pwd){
   return $result;
 
 }
+
 
 
 /* -------- smileys ------------------------------------------------- */

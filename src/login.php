@@ -42,6 +42,7 @@ if($action == "Signin"){
     //echo '<meta http-equiv="refresh" content="0;URL=../index.php">';
     exit();
     // incorporer valeur d'erreur.
+    // pouet
 
   }
 

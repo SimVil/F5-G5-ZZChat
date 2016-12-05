@@ -1,6 +1,22 @@
 
 <?php
 
+/* --------------------------------------------------------------------
+ * FILE : functions.php 
+ * 
+ * Author : Amin, Simon
+ * ------------------------------------------------------------------ */
+
+
+
+/* -------- DecodeFile ---------------------------------------------- */
+/* Input  : a file name
+ * Output : an array decoded from the file 
+ * 
+ * Proceed to decoding an array from a file in json format. The file
+ * shall contain names and password of each users
+ * ------------------------------------------------------------------ */
+ 
 function DecodeFile($filename){
   $users = file_get_contents($filename, false, NULL);
   $arr = json_decode($users, true);
@@ -10,6 +26,13 @@ function DecodeFile($filename){
 
 
 
+/* -------- ExistUser ----------------------------------------------- */
+/* Input  : a login
+ * Output : true whenever the user has been found, false otherwise.
+ * 
+ * Check whether a given user exist in the database.
+ * ------------------------------------------------------------------ */
+ 
 function ExistUser($log){
   $arr = DecodeFile('../db/users.txt');
   $found = false;
@@ -28,15 +51,30 @@ function ExistUser($log){
 
 
 
+/* -------- ValidUser ----------------------------------------------- */
+/* Input  : a login and a password
+ * Output : true if data are valid, false otherwise.
+ * 
+ * Verify that log and pwd are joint in database, that is, the username
+ * and the password given are valid.
+ * ------------------------------------------------------------------ */
+ 
 function ValidUser($log, $pwd){
   $arr = DecodeFile('../db/users.txt');
-
-  $tmp = array("login" => "$log", "pass" => "$pwd");
+  $coded_pwd = hash("sha256", "$pwd");
+  $tmp = array("login" => "$log", "pass" => "$coded_pwd");
   return !(!$arr || array_search($tmp, $arr) === false);
 
 }
 
 
+
+/* -------- IsConnected --------------------------------------------- */
+/* Input  : a login  
+ * Output : true if the user is connected, false if not.
+ * 
+ * Test if a user si connected or not.
+ * ------------------------------------------------------------------ */
 
 function IsConnected($log){
   $data = file_get_contents('../db/online.txt', false, NULL);
@@ -53,29 +91,58 @@ function IsConnected($log){
 
 
 
+/* -------- GetConnected -------------------------------------------- */
+/* Input  : a login 
+ * Output : true if connection succeeded, false otherwise.
+ * 
+ * Get an user connected, if it is not already.
+ * ------------------------------------------------------------------ */
+
 function GetConnected($log){
   $filename = fopen('../db/online.txt', 'a');
-  if($filename){
+  $result = false;
+   
+  if($filename && !IsConnected($log)){
     fwrite($filename, $log."\n");
     fclose($filename);
+    $result = true;
+    
   }
+  
+  return $result;
 
 }
 
 
 
+/* -------- EncodeUser ---------------------------------------------- */
+/* Input  : a login, a password 
+ * Output : true for success, false for fail.
+ * 
+ * Write the new user into the database file.
+ * ------------------------------------------------------------------ */
+
 function EncodeUser($log, $pwd){
   $arr = DecodeFile('../db/users.txt');
+  $result = false;
+  $coded_pwd = hash("sha256", "$pwd");
 
   if(!$arr){
-    $arr[] = array("login" => "$log", "pass" => "$pwd");
+    $arr[] = array("login" => "$log", "pass" => "$coded_pwd");
+    $result = true;
+    
   } else {
-    array_push($arr, array("login" => "$log", "pass" => "$pwd"));
+	if(array_search($log, $arr) === false){
+		array_push($arr, array("login" => "$log", "pass" => "$coded_pwd"));
+		$result = true;
+		
+	}
 
   }
 
   $json_arr = json_encode($arr);
   file_put_contents('../db/users.txt', $json_arr);
+  return $result;
 
 }
 

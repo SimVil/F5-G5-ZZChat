@@ -61,8 +61,8 @@ function ExistUser($log){
  
 function ValidUser($log, $pwd){
   $arr = DecodeFile('../db/users.txt');
-
-  $tmp = array("login" => "$log", "pass" => "$pwd");
+  $coded_pwd = hash("sha256", "$pwd");
+  $tmp = array("login" => "$log", "pass" => "$coded_pwd");
   return !(!$arr || array_search($tmp, $arr) === false);
 
 }
@@ -125,14 +125,15 @@ function GetConnected($log){
 function EncodeUser($log, $pwd){
   $arr = DecodeFile('../db/users.txt');
   $result = false;
+  $coded_pwd = hash("sha256", "$pwd");
 
   if(!$arr){
-    $arr[] = array("login" => "$log", "pass" => "$pwd");
+    $arr[] = array("login" => "$log", "pass" => "$coded_pwd");
     $result = true;
     
   } else {
 	if(array_search($log, $arr) === false){
-		array_push($arr, array("login" => "$log", "pass" => "$pwd"));
+		array_push($arr, array("login" => "$log", "pass" => "$coded_pwd"));
 		$result = true;
 		
 	}

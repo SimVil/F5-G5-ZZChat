@@ -24,13 +24,13 @@ $id = $_POST['login'];
 $pass = $_POST['password'];
 $action = $_POST['action'];
 
-
+$usersfile = '../db/users.txt';
 
 // if action is signin -> check data and connect or reject
 // if action is register -> verify uniqueness of login and write in users.txt
 
 if($action == "Signin"){
-  if(ValidUser($id, $pass) && !IsConnected($id)){
+  if(ValidUser($id, $pass, $usersfile) && !IsConnected($id)){
     GetConnected($id);
     //echo "hourra";
     session_start();
@@ -44,13 +44,15 @@ if($action == "Signin"){
     //echo "bah nan";
     exit();
     // incorporer valeur d'erreur.
+    // pouet
 
   }
 
 } else {
-  if(!ExistUser($id)){
-    EncodeUser($id, $pass);
-    echo '<meta http-equiv="refresh" content="0;URL=../index.php?id=signin">';
+
+  if(!ExistUser($id, $usersfile)){
+    EncodeUser($id, $pass, $usersfile);
+    //echo '<meta http-equiv="refresh" content="0;URL=../index.php?id=signin">';
     // incorporer message succes.
     //echo "ouahou ca marhce";
 

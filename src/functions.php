@@ -28,14 +28,14 @@ function DecodeFile($filename){
 
 
 /* -------- ExistUser ----------------------------------------------- */
-/* Input  : a login
+/* Input  : a login, a file name
  * Output : true whenever the user has been found, false otherwise.
  *
  * Check whether a given user exist in the database.
  * ------------------------------------------------------------------ */
 
-function ExistUser($log){
-  $arr = DecodeFile('../db/users.txt');
+function ExistUser($log, $filename){
+  $arr = DecodeFile($filename);
   $found = false;
   if($arr){
     foreach($arr as $key => $value){
@@ -53,15 +53,15 @@ function ExistUser($log){
 
 
 /* -------- ValidUser ----------------------------------------------- */
-/* Input  : a login and a password
+/* Input  : a login, a password, a filename
  * Output : true if data are valid, false otherwise.
  *
  * Verify that log and pwd are joint in database, that is, the username
  * and the password given are valid.
  * ------------------------------------------------------------------ */
 
-function ValidUser($log, $pwd){
-  $arr = DecodeFile('../db/users.txt');
+function ValidUser($log, $pwd, $filename){
+  $arr = DecodeFile($filename);
   $coded_pwd = hash("sha256", "$pwd");
   $tmp = array("login" => "$log", "pass" => "$coded_pwd");
   return !(!$arr || array_search($tmp, $arr) === false);
@@ -117,14 +117,14 @@ function GetConnected($log){
 
 
 /* -------- EncodeUser ---------------------------------------------- */
-/* Input  : a login, a password
+/* Input  : a login, a password, a filename
  * Output : true for success, false for fail.
  *
  * Write the new user into the database file.
  * ------------------------------------------------------------------ */
 
-function EncodeUser($log, $pwd){
-  $arr = DecodeFile('../db/users.txt');
+function EncodeUser($log, $pwd, $filename){
+  $arr = DecodeFile($filename);
   $result = false;
   $coded_pwd = hash("sha256", "$pwd");
 
@@ -142,7 +142,7 @@ function EncodeUser($log, $pwd){
   }
 
   $json_arr = json_encode($arr);
-  file_put_contents('../db/users.txt', $json_arr);
+  file_put_contents($filename, $json_arr);
   return $result;
 
 }

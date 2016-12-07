@@ -9,7 +9,7 @@
 
 
 // first use : windows (XAMPP)
-// second one : Unix
+// second one : Unix (centOS)
 // use vendor\phpunit\phpunit\tests\Framework\TestCase; 
 require_once 'functions.php';
 use PHPUnit\Framework\TestCase;

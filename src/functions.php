@@ -127,14 +127,15 @@ function EncodeUser($log, $pwd, $filename){
   $arr = DecodeFile($filename);
   $result = false;
   $coded_pwd = hash("sha256", "$pwd");
+  $item = array("login" => "$log", "pass" => "$coded_pwd");
 
   if(!$arr){
-    $arr[] = array("login" => "$log", "pass" => "$coded_pwd");
+    $arr[] = $item;
     $result = true;
 
   } else {
-  	if(array_search($log, $arr) === false){
-  		array_push($arr, array("login" => "$log", "pass" => "$coded_pwd"));
+  	if(array_search($log, array_column($arr, 'login')) === false){
+  		array_push($arr, $item);
   		$result = true;
 
   	}
@@ -165,4 +166,5 @@ function smileys($text) {
   return $text ;
 }
 
- ?>
+?>
+

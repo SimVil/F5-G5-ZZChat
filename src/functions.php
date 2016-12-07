@@ -159,12 +159,13 @@ function EncodeUser($log, $pwd, $filename){
 
 function smileys($text) {
   $smileys = array(":)",";)","^^",":@",":'(",":p",":(");
-  $paths = array("./emoticons/smiley.png","./emoticons/wink.png","./emoticons/content.png","./emoticons/angry.gif","./emoticons/pleure.png","./emoticons/tongue.png","./emoticons/triste.png");
+  $paths = array("../static/emoticons/smiley.png","../static/emoticons/wink.png","../static/emoticons/content.png","../static/emoticons/angry.gif","../static/emoticons/pleure.png","../static/emoticons/tongue.png","../static/emoticons/triste.png");
   for($i=0;$i<count($smileys);$i++) {
     $text = str_replace($smileys[$i],'<img  src='.$paths[$i].'>',$text);
     }
   return $text ;
 }
 
-?>
+ ?>
+
 

@@ -147,7 +147,6 @@ function EncodeUser($log, $pwd){
 }
 
 
-<?php
 //manage the emoticons
 function smileys($text) {
   $smileys = array(":)",";)","^^",":@",":'(",":p",":(");   
@@ -159,5 +158,3 @@ function smileys($text) {
 }
 ?>
 
-
- ?>

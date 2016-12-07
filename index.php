@@ -72,17 +72,14 @@ body marker :
       switch($id){
         case 'register':
           include($register);
-          echo "1";
           break;
 
         case 'signin':
           include($signin);
-          echo "2";
           break;
 
         default:
           include($signin);
-          echo "default";
           break;
 
       }

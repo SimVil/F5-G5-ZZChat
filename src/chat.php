@@ -14,7 +14,7 @@ if(empty($_SESSION)){
     <title>Chat</title>
 	<link rel="stylesheet" href="../static/css/bootstrap.css">
 	<link rel="stylesheet" href="../static/css/stylesheet.css">
-    <link rel="stylesheet" href="../static/css/chatcss.css" type="text/css" />
+    <link rel="stylesheet" href="/~ahnahhas/static/css/chatcss.css" type="text/css" />
     
 </head>
 
@@ -43,7 +43,7 @@ if(empty($_SESSION)){
     
     </div>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <script type="text/javascript" src="../static/js/chat.js"></script>
+    <script type="text/javascript" src="/~ahnahhas/static/js/chat.js"></script>
     <script type="text/javascript">
     
         

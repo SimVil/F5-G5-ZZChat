@@ -78,16 +78,29 @@ function ValidUser($log, $pwd, $filename){
  * ------------------------------------------------------------------ */
 
 function IsConnected($log){
-  $data = file_get_contents('../db/online.txt', false, NULL);
+  $arr = ReadOnlineArray('../db/online.txt');
   $result = false;
 
-  if($data){
-    $arr = explode("\n", $data);
+  if($arr){
     $result = !(array_search($log, $arr) === false);
   }
 
   return $result;
 
+}
+
+
+
+
+function ReadOnlineArray($filename){
+	$data = file_get_contents('../db/online.txt', false, NULL);
+	$arr = NULL;
+	
+	if($data){
+		$arr = explode("\n", $data);
+	}
+	
+	return $arr;
 }
 
 
@@ -135,11 +148,13 @@ function EncodeUser($log, $pwd, $filename){
 
   } else {
   	//if(array_search($log, array_column($arr, 'login')) === false){
-  	if(array_find($arr, $log)){
+  	if(array_find($arr, $log) === false){
   		array_push($arr, $item);
   		$result = true;
 
-  	}
+  	} else {
+		echo "a pas marche";
+	}
 
   }
 
@@ -156,7 +171,8 @@ function array_find($arr, $var){
 	$i = 0;
 	$found = false;
 	while($i < $count && $found === false){
-		$found = array_search($arr[i], $var);
+		$found = array_search($var, $arr[$i]);
+		$i = $i + 1;
 	}
 	
 	return $found;

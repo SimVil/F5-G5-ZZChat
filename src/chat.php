@@ -1,5 +1,7 @@
 <?php
-session_start();
+if(!isset($_SESSION)){
+	session_start();
+}
 ?>
 
 <!DOCTYPE >
@@ -11,12 +13,17 @@ session_start();
     
     <title>Chat</title>
     
-    <link rel="stylesheet" href="/static/css/chatcss.css" type="text/css" />
+    <link rel="stylesheet" href="../static/css/chatcss.css" type="text/css" />
     
     
 </head>
 
 <body onload="setInterval('chat.update()', 1000)">
+	
+    <nav class="navbar navbar-fixed-top">
+      <a class="navbar-brand" href="logout.php"> Log-out </a>
+
+    </nav>
 
     <div id="page-wrap">
     
@@ -33,7 +40,7 @@ session_start();
     
     </div>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <script type="text/javascript" src="/static/js/chat.js"></script>
+    <script type="text/javascript" src="../static/js/chat.js"></script>
     <script type="text/javascript">
     
         

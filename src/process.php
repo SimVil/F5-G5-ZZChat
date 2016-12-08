@@ -11,15 +11,17 @@
     	case('getState'):
             if(file_exists('../db/chat.txt')){
                $lines = file('../db/chat.txt');
+               $connected = file('../db/online.txt');
         	}
-            $log['state'] = count($lines); //log['state'] contient le nombre de lignes;
+            $log['state'] = count($lines); //log['state'] contient le nombre de lignes du chat.txt;
+            $log['onlinepeople'] = count($connected); //log['connected'] le nombre de lignes du online.txt;
         	break;	
     	
     	case('update'):
         	$state = $_POST['state'];
-        	if(file_exists('../db/chat.txt')){
+        	//if(file_exists('../db/chat.txt')){ //No need for it but uh just to let you know david that we ain't playing around !!!
         	   $lines = file('../db/chat.txt');
-        	}
+        	//}
         	$count =  count($lines);
         	if($state == $count){
         		$log['state'] = $state;
@@ -40,7 +42,7 @@
         	}
         	  
              break;
-	     case('getonline'):
+        case('getonline'):
         
 			$online = $_POST['online'];
         	//if(file_exists('../db/chat.txt')){ //No need for it but uh just to let you know david that we ain't playing around !!!
@@ -66,8 +68,9 @@
         			 $log['onlinepeople'] = $onlinelines;
         			 $log['diff']= $diff;
         	}
-	  break;
-          	 
+			
+         
+         break; 	
     	case('send'):
 		  $nickname = htmlentities(strip_tags($_POST['nickname']));
 			 $reg_exUrl = "/((http|https|ftp|ftps)\:\/\/|www)[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";

@@ -1,4 +1,5 @@
 var state = 0;
+var online = 0;
 
 
 
@@ -15,7 +16,7 @@ function getStateOfChat(){
 
 			 $.ajax({
 			   type: "POST",
-			   url: "/~ahnahhas/src/process.php",
+			   url: "process.php",
 			   data: {  
 			   			'function': 'getState',
 					},
@@ -24,6 +25,7 @@ function getStateOfChat(){
 			   success: function(data){
 			   	
 				   state = data.state;
+				   online = data.onlinepeople;
 				},
 			});
 }
@@ -74,6 +76,7 @@ function sendChat(message, nickname)
 		});
 }
 
+
 //Who the hell is freaking online
 function updateConnected() {
     $.ajax({
@@ -100,5 +103,4 @@ function updateConnected() {
 		});
 		setTimeout(updateConnected, 1500);
 }
-
 

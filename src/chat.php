@@ -22,7 +22,7 @@ if(empty($_SESSION)){
 	
     <nav class="navbar navbar-fixed-top">
       <a class="navbar-brand" href="logout.php"> Log-out </a>
-      <a class="navbar-brand" href="logout.php"> <?php echo $_SESSION['login'] ?></a></a>
+      <a class="navbar-brand" href="#"> <?php echo $_SESSION['login'] ?></a></a>
 
     </nav>
 
@@ -48,7 +48,7 @@ if(empty($_SESSION)){
         var name = "Amin";
         
         // display name on page
-        $("#name-area").html("You are: <span>" + name + "</span>");
+        //$("#name-area").html("You are: <span>" + name + "</span>");
         
         // kick off chat
         var chat =  new Chat();

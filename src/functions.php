@@ -134,7 +134,8 @@ function EncodeUser($log, $pwd, $filename){
     $result = true;
 
   } else {
-  	if(array_search($log, array_column($arr, 'login')) === false){
+  	//if(array_search($log, array_column($arr, 'login')) === false){
+  	if(array_find($arr, $log)){
   		array_push($arr, $item);
   		$result = true;
 
@@ -148,6 +149,18 @@ function EncodeUser($log, $pwd, $filename){
 
 }
 
+
+
+function array_find($arr, $var){
+	$count = count($arr);
+	$i = 0;
+	$found = false;
+	while($i < $count && $found === false){
+		$found = array_search($arr[i], $var);
+	}
+	
+	return $found;
+}
 
 
 /* -------- smileys ------------------------------------------------- */

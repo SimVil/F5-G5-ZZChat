@@ -7,6 +7,7 @@ function Chat () {
     this.update = updateChat;
     this.send = sendChat;
 	this.getState = getStateOfChat;
+	this.connected = updateConnected ;
 }
 
 //gets the state of the chat
@@ -71,6 +72,32 @@ function sendChat(message, nickname)
 			   updateChat();
 		   },
 		});
+}
+
+//Who the hell is freaking online
+function updateConnected() {
+    $.ajax({
+		   type: "POST",
+		   url: "process.php",
+		   data: {  
+		   			'function': 'getonline',
+					'online' : online,
+					
+				 },
+		   dataType: "json",
+		   success: function(data){
+			   if(data.connected){
+						for (var i = (data.connected.length - data.diff) ; i < data.connected.length; i++) {
+                            $('#connected').append($("<p>"+ data.connected[i] +"</p>"));
+                        }								  
+				   }
+				   
+				   online = data.onlinepeople;
+			   }
+			   
+		   
+		});
+		setTimeout(updateConnected, 1500);
 }
 
 

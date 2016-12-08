@@ -5,6 +5,7 @@ if(empty($_SESSION)){
 }
 ?>
 
+
 <!DOCTYPE html>
 <html lang="fr-FR">
 
@@ -17,8 +18,7 @@ if(empty($_SESSION)){
     
 </head>
 
-
-<body onload="setInterval('chat.update()', 1000)">
+<body onload="setInterval('chat.update()', 1000); setInterval('chat.connected()',1000)">
 	
     <nav class="navbar navbar-fixed-top">
       <a class="navbar-brand" href="logout.php"> Log-out </a>
@@ -38,14 +38,16 @@ if(empty($_SESSION)){
             <p>Your message: </p>
             <textarea id="sendie" maxlength = '100' ></textarea>
         </form>
+        <div id="connected"> <p> Connected People :</p>
+		</div>
     
     </div>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script type="text/javascript" src="../static/js/chat.js"></script>
     <script type="text/javascript">
     
         
-        var name = "Amin";
+        var name = '<?php echo $_SESSION['login']; ?>' ;
         
         // display name on page
         //$("#name-area").html("You are: <span>" + name + "</span>");
@@ -58,6 +60,8 @@ if(empty($_SESSION)){
              chat.update(); //if there's old messages
 
              chat.getState();
+            
+             chat.connected();
 
              // watch textarea for key presses
              $("#sendie").keydown(function(event) {  

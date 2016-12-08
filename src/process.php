@@ -40,6 +40,33 @@
         	}
         	  
              break;
+	     case('getonline'):
+        
+			$online = $_POST['online'];
+        	//if(file_exists('../db/chat.txt')){ //No need for it but uh just to let you know david that we ain't playing around !!!
+        	   $connected = file('../db/online.txt');
+        	//}
+        	$onlinelines =  count($connected);
+        	if($online == $onlinelines){
+        		$log['onlinepeople'] = $onlinelines;
+        		$log['connected'] = false;
+        		 
+        	}
+        	else{
+				$diff = $onlinelines - $online;
+        		$persons= array();
+        		foreach ($connected as $online_num => $onlineline)
+                {
+                    
+        			$persons[] =  $onlineline ;
+
+        				
+                }
+        			 $log['connected'] = $persons; 
+        			 $log['onlinepeople'] = $onlinelines;
+        			 $log['diff']= $diff;
+        	}
+	  break;
           	 
     	case('send'):
 		  $nickname = htmlentities(strip_tags($_POST['nickname']));

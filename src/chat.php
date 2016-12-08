@@ -18,13 +18,7 @@ if(empty($_SESSION)){
     
 </head>
 
-<body onload="setInterval('chat.update()', 1000); setInterval('chat.connected()',1000)">
-	
-    <nav class="navbar navbar-fixed-top">
-      <a class="navbar-brand" href="logout.php"> Log-out </a>
-      <a class="navbar-brand" href="#"> <?php echo $_SESSION['login'] ?></a></a>
-
-    </nav>
+<body onload="setInterval('chat.update()', 1000) ; setInterval('chat.connected()',1000)">
 
     <div id="page-wrap">
     
@@ -38,20 +32,22 @@ if(empty($_SESSION)){
             <p>Your message: </p>
             <textarea id="sendie" maxlength = '100' ></textarea>
         </form>
-	    <p id="onlineppl"> Connected People</p>
-        <div id="connected"> <p> </p>
+        </br>
+        </br>
+		<p id="onlineppl"> Connected People</p>
+		<div id="connected"> <p></p> </br>
 		</div>
-    
+		
     </div>
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script type="text/javascript" src="/~ahnahhas/static/js/chat.js"></script>
     <script type="text/javascript">
     
         
-        var name = '<?php echo $_SESSION['login']; ?>' ;
+        var name = '<?php echo $_SESSION['login']; ?>';
         
         // display name on page
-        //$("#name-area").html("You are: <span>" + name + "</span>");
+        $("#name-area").html("You are: <span>" + name + "</span>");
         
         // kick off chat
         var chat =  new Chat();
@@ -59,9 +55,10 @@ if(empty($_SESSION)){
         $(function() {
 
              chat.update(); //if there's old messages
-
+             
+              
              chat.getState();
-            
+             
              chat.connected();
 
              // watch textarea for key presses
@@ -82,10 +79,10 @@ if(empty($_SESSION)){
                   }  
                                                                                                                                                                                                             });
              // watch textarea for release of key press
-             $('#sendie').keyup(function(e) {   
-                                 
-                  if (e.keyCode == 13) { 
-                  
+             $("#sendie").keyup(function(e) {   
+                                
+                  if (e.keyCode === 13) { 
+					
                     var text = $(this).val();
                     var maxLength = $(this).attr("maxlength");  
                     var length = text.length; 
@@ -113,3 +110,4 @@ if(empty($_SESSION)){
 </body>
 
 </html>
+

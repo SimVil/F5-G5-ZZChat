@@ -1,6 +1,4 @@
-<?php
-session_start();
-?>
+
 
 <!DOCTYPE >
 <html >
@@ -37,7 +35,7 @@ session_start();
     <script type="text/javascript">
     
         
-        var name = "Amin";
+        var name = '<?php echo $_SESSION['login']; ?>' ;
         
         // display name on page
         $("#name-area").html("You are: <span>" + name + "</span>");

@@ -17,6 +17,24 @@
 
         </div>
 
+        <?php
+          $err = 0;
+          if(isset($_GET['err'])){
+            $err = $_GET['err'];
+
+            switch($err){
+                case 'regerr':
+                  echo '<div class="failure"> <b> Error</b>: Wrong or existent informations </div>';
+                  break;
+
+                default:
+                  break;
+              }
+          }
+
+
+        ?>
+
       </form>
 
     </div>

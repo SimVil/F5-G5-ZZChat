@@ -17,6 +17,28 @@
 
         </div>
 
+        <?php
+          $err = 0;
+          if(isset($_GET['err'])){
+            $err = $_GET['err'];
+
+            switch($err){
+                case 'signerr':
+                  echo '<div class="failure"> <b> Error</b>: Wrong Informations or already connected </div>';
+                  break;
+
+                case 'regv':
+                  echo '<div class="success"> Valid registration ! </div>';
+                  break;
+
+                default:
+                  break;
+              }
+          }
+
+
+        ?>
+
       </form>
 
     </div>

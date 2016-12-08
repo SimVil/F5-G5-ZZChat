@@ -169,6 +169,26 @@ input.valid{
 
 }
 
+.success{
+	padding: 2% 2% 2% 2%;
+	background-color: rgb(46, 204, 113);
+	color: rgb(15, 100, 60);
+	text-align : center;
+	border-radius: 3px;
+	border-color: rgb(19, 154, 76);
+	border-width: 4px;
+}
+
+.failure{
+	padding: 2% 2% 2% 2%;
+	background-color: rgb(231, 76, 60);
+	color: rgb(44, 62, 80);
+	text-align: center;
+	border-radius: 3px;
+	border-color: rgb(172, 37, 23);
+	border-width: 4px;
+}
+
 
 
 

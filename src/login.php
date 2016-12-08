@@ -41,7 +41,7 @@ if($action == "Signin"){
     exit();
 
   } else {
-    echo '<meta http-equiv="refresh" content="0;URL=../index.php">';
+    echo '<meta http-equiv="refresh" content="0;URL=../index.php?id=signin&err=signerr">';
     exit();
     // incorporer valeur d'erreur.
     // pouet
@@ -53,13 +53,13 @@ if($action == "Signin"){
   if(!ExistUser($id, $usersfile)){
     $r = EncodeUser($id, $pass, $usersfile);
     echo $r;
-    echo '<meta http-equiv="refresh" content="0;URL=../index.php?id=signin">';
+    echo '<meta http-equiv="refresh" content="0;URL=../index.php?id=signin&err=regv">';
     // incorporer message succes.
     //echo "ouahou ca marhce";
 
   } else {
     //echo "t'existe banane;";
-    echo '<meta http-equiv="refresh" content="0;URL=../index.php?id=register">';
+    echo '<meta http-equiv="refresh" content="0;URL=../index.php?id=register&err=regerr">';
   }
 }
 

@@ -8,20 +8,22 @@
 	$filename = '../db/online.txt';
 	
 	$arr = ReadOnlineArray($filename);
-	unset($arr[array_search($_SESSION['login'])]);
+	unset($arr[array_search($_SESSION['login'], $arr)]);
 	
 	$file = fopen($filename, 'w');
 	if($file){
 		foreach($arr as $key => $value){
-			fwrite($filename, $value."\n");
+			if($value !== "\n"){
+				fwrite($file, $value."\n");
+			}
 		}	
 	}
 	
-	fclose($filename);
-	$_SESSION = array();
+	fclose($file);
 	session_destroy();
+	unset($_SESSION);
 	
-	//echo '<meta http-equiv="refresh" content="0;URL=../index.php?id=signin">';
+	echo '<meta http-equiv="refresh" content="0;URL=../index.php?id=signin">';
 	exit();
 
 ?>

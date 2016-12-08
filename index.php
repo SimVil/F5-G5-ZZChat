@@ -8,6 +8,17 @@ DATE    : 2016.
 
 ============================================================================ -->
 
+<?php
+if(!empty($_SESSION)){
+	header('Location: src/chat.php', true, 302);
+	//print_r($_SESSION);
+	//session_destroy();
+	//print_r(isset($_SESSION));
+	
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr-FR">
 

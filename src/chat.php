@@ -1,27 +1,28 @@
 <?php
-if(!isset($_SESSION)){
-	session_start();
+if(empty($_SESSION)){
+	echo '<meta http-equiv="refresh" content="0;URL=../index.php">';
+	exit();
 }
 ?>
 
-<!DOCTYPE >
-<html >
+<!DOCTYPE html>
+<html lang="fr-FR">
 
 <head>
-
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Chat</title>
-    
+	<link rel="stylesheet" href="../static/css/bootstrap.css">
+	<link rel="stylesheet" href="../static/css/stylesheet.css">
     <link rel="stylesheet" href="../static/css/chatcss.css" type="text/css" />
     
-    
 </head>
+
 
 <body onload="setInterval('chat.update()', 1000)">
 	
     <nav class="navbar navbar-fixed-top">
       <a class="navbar-brand" href="logout.php"> Log-out </a>
+      <a class="navbar-brand" href="logout.php"> <?php echo $_SESSION['login'] ?></a></a>
 
     </nav>
 

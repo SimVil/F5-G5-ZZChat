@@ -52,7 +52,7 @@ if($action == "Signin"){
 
   if(!ExistUser($id, $usersfile)){
     EncodeUser($id, $pass, $usersfile);
-    //echo '<meta http-equiv="refresh" content="0;URL=../index.php?id=signin">';
+    echo '<meta http-equiv="refresh" content="0;URL=../index.php?id=signin">';
     // incorporer message succes.
     //echo "ouahou ca marhce";
 

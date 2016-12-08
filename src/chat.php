@@ -11,7 +11,7 @@ session_start();
     
     <title>Chat</title>
     
-    <link rel="stylesheet" href="style.css" type="text/css" />
+    <link rel="stylesheet" href="/static/css/chatcss.css" type="text/css" />
     
     
 </head>
@@ -28,16 +28,16 @@ session_start();
         
         <form id="send-message-area">
             <p>Your message: </p>
-            <textarea id="sendie" maxlength = '100' ></textarea> <input type="button" id="envoie" value="Envoyer"/>
+            <textarea id="sendie" maxlength = '100' ></textarea>
         </form>
     
     </div>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <script type="text/javascript" src="chat.js"></script>
+    <script type="text/javascript" src="/static/js/chat.js"></script>
     <script type="text/javascript">
     
         
-        var name = '<?php echo $_SESSION['nickname'] ; ?>';
+        var name = "Amin";
         
         // display name on page
         $("#name-area").html("You are: <span>" + name + "</span>");

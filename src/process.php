@@ -9,16 +9,16 @@
     switch($function) {
     
     	case('getState'):
-            if(file_exists('chat.txt')){
-               $lines = file('chat.txt');
+            if(file_exists('../db/chat.txt')){
+               $lines = file('../db/chat.txt');
         	}
             $log['state'] = count($lines); //log['state'] contient le nombre de lignes;
         	break;	
     	
     	case('update'):
         	$state = $_POST['state'];
-        	if(file_exists('chat.txt')){
-        	   $lines = file('chat.txt');
+        	if(file_exists('../db/chat.txt')){
+        	   $lines = file('../db/chat.txt');
         	}
         	$count =  count($lines);
         	if($state == $count){
@@ -52,7 +52,7 @@
 				} 
 			 
         	
-        	 fwrite(fopen('chat.txt', 'a'), "<span>". $nickname . "</span>" . $message = str_replace("\n", " ", $message) . "\n"); 
+        	 fwrite(fopen('../db/chat.txt', 'a'), "<span>". $nickname . "</span>" . $message = str_replace("\n", " ", $message) . "\n"); 
 		 }
         	 break;
     	

@@ -9,12 +9,10 @@ DATE    : 2016.
 ============================================================================ -->
 
 <?php
-if(!empty($_SESSION)){
+session_start();
+if(isset($_SESSION) && !empty($_SESSION)){
 	header('Location: src/chat.php', true, 302);
-	//print_r($_SESSION);
-	//session_destroy();
-	//print_r(isset($_SESSION));
-	
+	die();
 }
 
 ?>
@@ -78,7 +76,7 @@ body marker :
       if(isset($_GET['id'])){
         $id = $_GET['id'];
 
-      }      
+      }
 
       switch($id){
         case 'register':

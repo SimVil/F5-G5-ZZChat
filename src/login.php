@@ -32,13 +32,12 @@ $usersfile = '../db/users.txt';
 if($action == "Signin"){
   if(ValidUser($id, $pass, $usersfile) && !IsConnected($id)){
     GetConnected($id);
-    if(!empty($_SESSION)){
-		session_destroy();
-	}
-	session_start();
+	  session_start();
     $_SESSION['login'] = $id;
     $_SESSION['password'] = $pass;
     echo '<meta http-equiv="refresh" content="0;URL=chat.php">';
+    print_r($_SESSION);
+    echo "pouet";
     exit();
 
   } else {

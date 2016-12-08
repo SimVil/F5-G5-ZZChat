@@ -14,9 +14,9 @@ if(empty($_SESSION) || !IsConnected($_SESSION['login'])){
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Chat</title>
-	<link rel="stylesheet" href="../static/css/bootstrap.css">
-	<link rel="stylesheet" href="../static/css/stylesheet.css">
-    <link rel="stylesheet" href="../static/css/chatcss.css" type="text/css" />
+		<link rel="stylesheet" href="../static/css/bootstrap.css">
+		<link rel="stylesheet" href="../static/css/stylesheet.css">
+  	<link rel="stylesheet" href="../static/css/chatcss.css" type="text/css" />
 
 </head>
 
@@ -40,12 +40,14 @@ if(empty($_SESSION) || !IsConnected($_SESSION['login'])){
             <p>Your message: </p>
             <input id="sendie" maxlength = '100' >
         </form>
-        <div id="connected"> <p> Connected People :</p>
+        </br>
+        </br>
+		<p id="onlineppl"> Connected People</p>
+		<div id="connected"> <p></p> </br>
 		</div>
-
     </div>
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <script type="text/javascript" src="../static/js/chat.js"></script>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script type="text/javascript" src="/~ahnahhas/static/js/chat.js"></script>
     <script type="text/javascript">
 
 
@@ -60,9 +62,7 @@ if(empty($_SESSION) || !IsConnected($_SESSION['login'])){
         $(function() {
 
              chat.update(); //if there's old messages
-
              chat.getState();
-
              chat.connected();
 
              // watch textarea for key presses
@@ -85,7 +85,7 @@ if(empty($_SESSION) || !IsConnected($_SESSION['login'])){
              // watch textarea for release of key press
              $("#sendie").keyup(function(e) {
 
-                  if (e.keyCode == 13) {
+                  if (e.keyCode === 13) {
 
                     var text = $(this).val();
                     var maxLength = $(this).attr("maxlength");

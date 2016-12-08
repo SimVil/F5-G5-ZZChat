@@ -78,8 +78,8 @@
        			$message = preg_replace($reg_exUrl, '<a href="'.$url[0].'" target="_blank">'.$url[0].'</a>', $message); //pour les liens
 				} 
 			 
-        	
-        	 fwrite(fopen('../db/chat.txt', 'a'), "<span>". $nickname . "</span>" . $message = str_replace("\n", " ", $message) . "\n"); 
+        	$message = str_replace("\n", " ", $message);
+        	 fwrite(fopen('../db/chat.txt', 'a'), "<span>". $nickname . "</span>" . $message. "\n"); 
 		 }
         	 break;
     	

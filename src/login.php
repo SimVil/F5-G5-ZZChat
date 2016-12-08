@@ -32,8 +32,10 @@ $usersfile = '../db/users.txt';
 if($action == "Signin"){
   if(ValidUser($id, $pass, $usersfile) && !IsConnected($id)){
     GetConnected($id);
-    //echo "hourra";
-    session_start();
+    if(!empty($_SESSION)){
+		session_destroy();
+	}
+	session_start();
     $_SESSION['login'] = $id;
     $_SESSION['password'] = $pass;
     echo '<meta http-equiv="refresh" content="0;URL=chat.php">';
@@ -41,7 +43,6 @@ if($action == "Signin"){
 
   } else {
     echo '<meta http-equiv="refresh" content="0;URL=../index.php">';
-    //echo "bah nan";
     exit();
     // incorporer valeur d'erreur.
     // pouet

@@ -18,11 +18,11 @@ if(empty($_SESSION)){
     
 </head>
 
-<body onload="setInterval('chat.update()', 1000); setInterval('chat.connected()',1000)">
+<body onload="setInterval('chat.update()', 5000); setInterval('chat.connected()',5000)">
 	
     <nav class="navbar navbar-fixed-top">
       <a class="navbar-brand" href="logout.php"> Log-out </a>
-      <a class="navbar-brand" href="#"> <?php echo $_SESSION['login'] ?></a></a>
+      <a class="navbar-brand" href="#"> <?php echo $_SESSION['login'] ?></a>
 
     </nav>
 
@@ -36,7 +36,7 @@ if(empty($_SESSION)){
         
         <form id="send-message-area">
             <p>Your message: </p>
-            <textarea id="sendie" maxlength = '100' ></textarea>
+            <input id="sendie" maxlength = '100' >
         </form>
         <div id="connected"> <p> Connected People :</p>
 		</div>
@@ -50,7 +50,7 @@ if(empty($_SESSION)){
         var name = '<?php echo $_SESSION['login']; ?>' ;
         
         // display name on page
-        //$("#name-area").html("You are: <span>" + name + "</span>");
+        $("#name-area").html("You are: <span>" + name + "</span>");
         
         // kick off chat
         var chat =  new Chat();
@@ -81,7 +81,7 @@ if(empty($_SESSION)){
                   }  
                                                                                                                                                                                                             });
              // watch textarea for release of key press
-             $('#sendie').keyup(function(e) {   
+             $("#sendie").keyup(function(e) {   
                                  
                   if (e.keyCode == 13) { 
                   
@@ -99,7 +99,9 @@ if(empty($_SESSION)){
                     
                         $(this).val(text.substring(0, maxLength));
                         
-                    }   
+                    }
+                    
+                    $('#chat-area').load('../db/chat.txt');   
                     
                     
                   }

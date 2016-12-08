@@ -15,7 +15,7 @@ function getStateOfChat(){
 
 			 $.ajax({
 			   type: "POST",
-			   url: "/src/process.php",
+			   url: "process.php",
 			   data: {  
 			   			'function': 'getState',
 					},
@@ -33,7 +33,7 @@ function getStateOfChat(){
 function updateChat(){
 	 	     $.ajax({
 			   type: "POST",
-			   url: "/src/process.php",
+			   url: "process.php",
 			   data: {  
 			   			'function': 'update',
 						'state': state,
@@ -50,7 +50,7 @@ function updateChat(){
 			   },
 			});
 	
-		 setTimeout(updateChat, 1500); //updates the chat every second and a half
+		 setTimeout(updateChat, 5000); //updates the chat every second and a half
 
 }
 
@@ -60,7 +60,7 @@ function sendChat(message, nickname)
     updateChat();
      $.ajax({
 		   type: "POST",
-		   url: "/src/process.php",
+		   url: "process.php",
 		   data: {  
 		   			'function': 'send',
 					'message': message,

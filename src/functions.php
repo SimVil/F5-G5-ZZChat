@@ -152,10 +152,7 @@ function EncodeUser($log, $pwd, $filename){
   		array_push($arr, $item);
   		$result = true;
 
-  	} else {
-		echo "a pas marche";
-	}
-
+  	}   
   }
 
   $json_arr = json_encode($arr);

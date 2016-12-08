@@ -38,7 +38,8 @@ if(empty($_SESSION)){
             <p>Your message: </p>
             <textarea id="sendie" maxlength = '100' ></textarea>
         </form>
-        <div id="connected"> <p> Connected People :</p>
+	    <p id="onlineppl"> Connected People</p>
+        <div id="connected"> <p> </p>
 		</div>
     
     </div>

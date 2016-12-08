@@ -14,7 +14,7 @@
     
 </head>
 
-<body onload="setInterval('chat.update()', 1000)">
+<body onload="setInterval('chat.update()', 1000) ; setInterval('chat.connected()',1000)">
 
     <div id="page-wrap">
     
@@ -28,6 +28,8 @@
             <p>Your message: </p>
             <textarea id="sendie" maxlength = '100' ></textarea>
         </form>
+        <div id="connected"> <p> Connected People :</p>
+		</div>
     
     </div>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
@@ -48,6 +50,8 @@
              chat.update(); //if there's old messages
 
              chat.getState();
+            
+             chat.connected();
 
              // watch textarea for key presses
              $("#sendie").keydown(function(event) {  

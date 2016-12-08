@@ -87,7 +87,8 @@ function updateConnected() {
 		   dataType: "json",
 		   success: function(data){
 			   if(data.connected){
-						for (var i = (data.connected.length - data.diff) ; i < data.connected.length; i++) {
+			    document.getElementById('connected').innerHTML = '';
+			    for (var i = 0 ; i < data.connected.length ; i++) {
                             $('#connected').append($("<p>"+ data.connected[i] +"</p>"));
                         }								  
 				   }

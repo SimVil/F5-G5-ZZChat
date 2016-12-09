@@ -228,6 +228,14 @@ class FunctionsTest extends \PHPUnit_Framework_TestCase
 		
 		unlink($file);
 	}
+	
+	public function testsmiley1(){
+		$text1 = ":@ Hello there :) !";
+		$text2 = "Hello there !";
+		
+		$this->assertEquals($text2, smileys($text2));
+		$this->assertNotEquals($text1, smileys($text1));
+	}
 		
 
 }

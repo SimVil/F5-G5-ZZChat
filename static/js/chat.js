@@ -35,11 +35,7 @@ function getStateOfChat(){
 function updateChat(){
 	 	     $.ajax({
 			   type: "POST",
-<<<<<<< HEAD
-			   url: "process.php",
-=======
 			   url: "/~ahnahhas/src/process.php",
->>>>>>> 1dff97e3195f20cd2cff0b453b5440dfa9e52000
 			   data: {  
 			   			'function': 'update',
 						'state': state,
@@ -66,11 +62,7 @@ function sendChat(message, nickname)
     updateChat();
      $.ajax({
 		   type: "POST",
-<<<<<<< HEAD
-		   url: "process.php",
-=======
 		   url: "/~ahnahhas/src/process.php",
->>>>>>> 1dff97e3195f20cd2cff0b453b5440dfa9e52000
 		   data: {  
 		   			'function': 'send',
 					'message': message,

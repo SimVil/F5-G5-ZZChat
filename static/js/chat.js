@@ -16,7 +16,7 @@ function getStateOfChat(){
 
 			 $.ajax({
 			   type: "POST",
-			   url: "process.php",
+			   url: "/~vilminsi/zzChat/src/process.php",
 			   data: {  
 			   			'function': 'getState',
 					},
@@ -35,7 +35,7 @@ function getStateOfChat(){
 function updateChat(){
 	 	     $.ajax({
 			   type: "POST",
-			   url: "/~ahnahhas/src/process.php",
+			   url: "/~vilminsi/zzChat/src/process.php",
 			   data: {  
 			   			'function': 'update',
 						'state': state,
@@ -52,7 +52,7 @@ function updateChat(){
 			   },
 			});
 	
-		 setTimeout(updateChat, 5000); //updates the chat every second and a half
+		 setTimeout(updateChat, 1500); //updates the chat every second and a half
 
 }
 
@@ -62,7 +62,7 @@ function sendChat(message, nickname)
     updateChat();
      $.ajax({
 		   type: "POST",
-		   url: "/~ahnahhas/src/process.php",
+		   url: "/~vilminsi/zzChat/src/process.php",
 		   data: {  
 		   			'function': 'send',
 					'message': message,
@@ -81,7 +81,7 @@ function sendChat(message, nickname)
 function updateConnected() {
     $.ajax({
 		   type: "POST",
-		   url: "/~ahnahhas/src/process.php",
+		   url: "/~vilminsi/zzChat/src/process.php",
 		   data: {  
 		   			'function': 'getonline',
 					'online' : online,
@@ -103,4 +103,3 @@ function updateConnected() {
 		});
 		setTimeout(updateConnected, 1500);
 }
-

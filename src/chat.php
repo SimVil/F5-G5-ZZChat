@@ -53,69 +53,65 @@ if(empty($_SESSION) || !IsConnected($_SESSION['login'], $onlinefile)){
 		</div>
     </div>
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <script type="text/javascript" src="/~ahnahhas/static/js/chat.js"></script>
+    <script type="text/javascript" src="/~vilminsi/zzChat/static/js/chat.js"></script>
     <script type="text/javascript">
 
 
-        var name = '<?php echo $_SESSION['login']; ?>' ;
-
+        var name = '<?php echo $_SESSION['login'] ; ?>';
+        
         // display name on page
-        $("#name-area").html("You are: <span>" + name + "</span>");
-
+        //$("#name-area").html("You are: <span>" + name + "</span>");
+        
         // kick off chat
         var chat =  new Chat();
-
         $(function() {
-
              chat.update(); //if there's old messages
+             
+              
              chat.getState();
+             
              chat.connected();
-
              // watch textarea for key presses
-             $("#sendie").keydown(function(event) {
-
-                 var key = event.which;
-
-                 //all keys including return.
+             $("#sendie").keydown(function(event) {  
+             
+                 var key = event.which;  
+           
+                 //all keys including return.  
                  if (key >= 33) {
-
-                     var maxLength = $(this).attr("maxlength");
-                     var length = this.value.length;
-
+                   
+                     var maxLength = $(this).attr("maxlength");  
+                     var length = this.value.length;  
+                     
                      // don't allow new content if length is maxed out
-                     if (length >= maxLength) {
-                         event.preventDefault();
-                     }
-                  }
+                     if (length >= maxLength) {  
+                         event.preventDefault();  
+                     }  
+                  }  
                                                                                                                                                                                                             });
              // watch textarea for release of key press
-             $("#sendie").keyup(function(e) {
-
-                  if (e.keyCode === 13) {
-
+             $("#sendie").keyup(function(e) {   
+                                
+                  if (e.keyCode === 13) { 
+					
                     var text = $(this).val();
-                    var maxLength = $(this).attr("maxlength");
-                    var length = text.length;
-
-                    // send
-                    if (length <= maxLength + 1) {
-
-                        chat.send(text, name);
+                    var maxLength = $(this).attr("maxlength");  
+                    var length = text.length; 
+                     
+                    // send 
+                    if (length <= maxLength + 1) { 
+                     
+                        chat.send(text, name);  
                         $(this).val(""); //delete the message after sending it
-
+                        
                     } else {
-
+                    
                         $(this).val(text.substring(0, maxLength));
-
-                    }
-
-                    $('#chat-area').load('../db/chat.txt');
-
-
+                        
+                    }   
+                    
+                    
                   }
              });
-
-
         });
     </script>
 

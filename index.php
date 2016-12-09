@@ -17,7 +17,7 @@ if(!isset($_SESSION)){
 
 if(isset($_SESSION) && !empty($_SESSION)){
 	if(isset($_SESSION['login']) && IsConnected($_SESSION['login'], './db/online.txt')){
-		 echo '<meta http-equiv="refresh" content="0;URL=src/chat.php">';
+		echo '<meta http-equiv="refresh" content="0;URL=src/chat.php">';
 		die();
 	}
 }

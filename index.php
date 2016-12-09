@@ -9,11 +9,20 @@ DATE    : 2016.
 ============================================================================ -->
 
 <?php
-session_start();
-if(isset($_SESSION) && !empty($_SESSION)){
-	header('Location: src/chat.php', true, 302);
-	die();
+include('src/functions.php');
+
+if(!isset($_SESSION)){
+	session_start();
 }
+
+if(isset($_SESSION) && !empty($_SESSION)){
+	if(isset($_SESSION['login']) && IsConnected($_SESSION['login'], './db/online.txt')){
+		 echo '<meta http-equiv="refresh" content="0;URL=src/chat.php">';
+		die();
+	}
+}
+
+session_destroy();
 
 ?>
 

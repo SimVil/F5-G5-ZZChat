@@ -4,7 +4,8 @@
       <form class="form-signin" action="./src/login.php" method="post">
         <h1 class="form-heading"> ZZ-Chat </h1>
         <div class="form-input-text">
-          <input type="text" class="valid" name="login" id="login" placeholder="Login"/>
+          <input type="text" class="valid" name="login" id="login" placeholder="Login" 
+          value="<? if(isset($_COOKIE['login'])){echo $_COOKIE['login'];}?>"/>
           <br>
 
           <input type="password" class ="valid" name="password" id="password" placeholder="Password"/>

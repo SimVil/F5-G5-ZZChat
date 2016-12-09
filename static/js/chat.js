@@ -16,7 +16,7 @@ function getStateOfChat(){
 
 			 $.ajax({
 			   type: "POST",
-			   url: "process.php",
+			   url: "/~ahnahhas/src/process.php",
 			   data: {  
 			   			'function': 'getState',
 					},
@@ -52,7 +52,7 @@ function updateChat(){
 			   },
 			});
 	
-		 setTimeout(updateChat, 5000); //updates the chat every second and a half
+		 setTimeout(updateChat, 1500); //updates the chat every second and a half
 
 }
 
@@ -103,4 +103,3 @@ function updateConnected() {
 		});
 		setTimeout(updateConnected, 1500);
 }
-

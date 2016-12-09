@@ -52,7 +52,7 @@ function updateChat(){
 			   },
 			});
 	
-		 setTimeout(updateChat, 5000); //updates the chat every second and a half
+		 setTimeout(updateChat, 1500); //updates the chat every second and a half
 
 }
 

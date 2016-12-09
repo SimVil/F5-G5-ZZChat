@@ -1,8 +1,8 @@
 
 <?php
-/* -------------------------------------------------------------------- */
+/* ------------------------------------------------------------------ */
 /* FILE : functionsTest.php
- * aims to test the functions present in
+ * aims to test the functions present in functions.php
  *
  * Author : Amin, Simon
  * ------------------------------------------------------------------ */

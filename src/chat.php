@@ -1,5 +1,12 @@
 <?php
 
+/* ------------------------------------------------------------------ */
+/* FILE : chat.php
+ * main file for presenting the app
+ *
+ * Author : Amin, Simon
+ * ------------------------------------------------------------------ */
+
 include('functions.php');
 if(!isset($_SESSION)){
 	session_start();

@@ -44,11 +44,11 @@ if($action == $signinbar){
     if(!isset($_SESSION)){
 		session_start();
 	}
-    			
+
     $_SESSION['login'] = $id;
     $_SESSION['password'] = $pass;
     setcookie('login', $id, time() + 3600, '/', null, false, true);
-    
+
     echo '<meta http-equiv="refresh" content="0;URL=chat.php?lg='.$langzzchat.'">';
     exit();
 
@@ -63,14 +63,13 @@ if($action == $signinbar){
 
   if(checkVarReg($pass) && checkVarReg($id) && !ExistUser($id, $usersfile)){
     EncodeUser($id, $pass, $usersfile);
- 
     echo '<meta http-equiv="refresh" content="0;URL=../index.php?id=signin&err=regv">';
 
   } else {
-
     echo '<meta http-equiv="refresh" content="0;URL=../index.php?id=register&err=regerr">';
+
   }
-  
+
 }
 
 ?>

@@ -1,14 +1,12 @@
-
-<!-- ==========================================================================
-index.php file :
-  main file for ZZChat website
-
-AUTHORS : Amin, Simon
-DATE    : 2016.
-
-============================================================================ -->
-
 <?php
+
+/* --------------------------------------------------------------------
+ * FILE : index.php
+ * main file for register and signin
+ *
+ * Author : Amin, Simon
+ * ------------------------------------------------------------------ */
+
 include('src/functions.php');
 
 if(!isset($_SESSION)){
@@ -17,7 +15,7 @@ if(!isset($_SESSION)){
 
 if(isset($_SESSION) && !empty($_SESSION)){
 	if(isset($_SESSION['login']) && IsConnected($_SESSION['login'], './db/online.txt')){
-		 echo '<meta http-equiv="refresh" content="0;URL=src/chat.php">';
+		echo '<meta http-equiv="refresh" content="0;URL=src/chat.php">';
 		die();
 	}
 }
@@ -37,7 +35,7 @@ if(isset($_GET['lg'])){
         case 'french':
           include('./src/french.php');
           break;
-}	
+}
 
 session_destroy();
 
@@ -77,19 +75,10 @@ body marker :
 <body>
   <div class="main">
 
-    <!-- Navigation bar -->
-    <!-- to be improved : get 'a' tags into a list -->
-    <!-- beware of css modifications -->
-
-
     <nav class="navbar navbar-fixed-top">
       <a class="navbar-brand" href="index.php?id=register&lg=<?php echo($_COOKIE['langzzchat']); ?>" > <?php echo($registerbar); ?></a>
       <a class="navbar-brand" href="index.php?id=signin&lg=<?php echo($_COOKIE['langzzchat']); ?>"> <?php echo($signinbar); ?> </a>
     </nav>
-    
-      
-
-    <!-- PHP inclusion script -->
 
     <?php
 

@@ -1,3 +1,13 @@
+
+<?php
+/* --------------------------------------------------------------------
+ * FILE : sign-in.php
+ * signin form, called in index.php
+ *
+ * Author : Amin, Simon
+ * ------------------------------------------------------------------ */
+
+?>
 </br>
     </br>
     </br>
@@ -11,7 +21,7 @@
       <form class="form-signin" action="./src/login.php?lg=<?php echo($_COOKIE['langzzchat']); ?>" method="post">
         <h1 class="form-heading"> ZZ-Chat </h1>
         <div class="form-input-text">
-          <input type="text" class="valid" name="login" id="login" placeholder="Login" 
+          <input type="text" class="valid" name="login" id="login" placeholder="Login"
           value="<? if(isset($_COOKIE['login'])){echo $_COOKIE['login'];}?>"/>
           <br>
 

@@ -104,3 +104,4 @@ function updateConnected() {
 		setTimeout(updateConnected, 1500);
 }
 
+>>>>>>> 4c4c6620d5441c0030d2bd53165294a536c260aa

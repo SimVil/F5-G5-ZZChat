@@ -71,14 +71,14 @@ function ValidUser($log, $pwd, $filename){
 
 
 /* -------- IsConnected --------------------------------------------- */
-/* Input  : a login
+/* Input  : a login, a filename
  * Output : true if the user is connected, false if not.
  *
  * Test if a user si connected or not.
  * ------------------------------------------------------------------ */
 
-function IsConnected($log){
-  $arr = ReadOnlineArray('../db/online.txt');
+function IsConnected($log, $filename){
+  $arr = ReadOnlineArray($filename);
   $result = false;
 
   if($arr){
@@ -92,8 +92,15 @@ function IsConnected($log){
 
 
 
+/* -------- ReadOnlineArray ----------------------------------------- */
+/* Input  : a filename
+ * Output : an array containing online users
+ *
+ * Get the list of online users.
+ * ------------------------------------------------------------------ */
+
 function ReadOnlineArray($filename){
-	$data = file_get_contents('../db/online.txt', false, NULL);
+	$data = file_get_contents($filename, false, NULL);
 	$arr = NULL;
 	
 	if($data){
@@ -106,19 +113,19 @@ function ReadOnlineArray($filename){
 
 
 /* -------- GetConnected -------------------------------------------- */
-/* Input  : a login
+/* Input  : a login, a filename
  * Output : true if connection succeeded, false otherwise.
  *
  * Get an user connected, if it is not already.
  * ------------------------------------------------------------------ */
 
-function GetConnected($log){
-  $filename = fopen('../db/online.txt', 'a');
+function GetConnected($log, $filename){
+  $file = fopen($filename, 'a');
   $result = false;
 
-  if($filename && !IsConnected($log)){
-    fwrite($filename, $log."\n");
-    fclose($filename);
+  if($file && !IsConnected($log, $filename)){
+    fwrite($file, $log."\n");
+    fclose($file);
     $result = true;
 
   }
@@ -163,6 +170,14 @@ function EncodeUser($log, $pwd, $filename){
 
 
 
+
+/* -------- array_find ---------------------------------------------- */
+/* Input  : an bi-dimensionnal array, a value to find
+ * Output : true for success, false for fail.
+ *
+ * Find a value (or not) into an array.
+ * ------------------------------------------------------------------ */
+
 function array_find($arr, $var){
 	$count = count($arr);
 	$i = 0;
@@ -174,6 +189,7 @@ function array_find($arr, $var){
 	
 	return $found;
 }
+
 
 
 /* -------- smileys ------------------------------------------------- */
@@ -192,5 +208,23 @@ function smileys($text) {
   return $text ;
 }
 
+
+
+/* -------- checkVarReg --------------------------------------------- */
+/* Input  : a variable to be checked
+ * Output : true of false according to the result
+ *
+ * try to match $var with a given pattern.
+ * ------------------------------------------------------------------ */
+
+function checkVarReg($var){
+	$pattern = '/^[0-9A-Za-z]{5,15}$/';
+	return preg_match($pattern, $var);
+	
+	
+}
+
+
  ?>
+
 

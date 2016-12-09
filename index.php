@@ -9,11 +9,37 @@ DATE    : 2016.
 ============================================================================ -->
 
 <?php
-session_start();
-if(isset($_SESSION) && !empty($_SESSION)){
-	header('Location: src/chat.php', true, 302);
-	die();
+include('src/functions.php');
+
+if(!isset($_SESSION)){
+	session_start();
 }
+
+if(isset($_SESSION) && !empty($_SESSION)){
+	if(isset($_SESSION['login']) && IsConnected($_SESSION['login'], './db/online.txt')){
+		 echo '<meta http-equiv="refresh" content="0;URL=src/chat.php">';
+		die();
+	}
+}
+if(!isset($_COOKIE['langzzchat']))
+{
+	$_COOKIE['langzzchat'] = 'english';
+	include('./src/english.php');
+}
+if(isset($_GET['lg'])){
+	  $_COOKIE['langzzchat'] = $_GET['lg'] ;
+      }
+      switch($_COOKIE['langzzchat']){
+        case 'english':
+          include('./src/english.php');
+		  break;
+
+        case 'french':
+          include('./src/french.php');
+          break;
+}	
+
+session_destroy();
 
 ?>
 
@@ -57,12 +83,11 @@ body marker :
 
 
     <nav class="navbar navbar-fixed-top">
-      <a class="navbar-brand" href="index.php?id=register"> Register </a>
-      <a class="navbar-brand" href="index.php?id=signin"> Sign-in </a>
-
+      <a class="navbar-brand" href="index.php?id=register&lg=<?php echo($_COOKIE['langzzchat']); ?>" > <?php echo($registerbar); ?></a>
+      <a class="navbar-brand" href="index.php?id=signin&lg=<?php echo($_COOKIE['langzzchat']); ?>"> <?php echo($signinbar); ?> </a>
     </nav>
-
-
+    
+      
 
     <!-- PHP inclusion script -->
 
@@ -77,11 +102,10 @@ body marker :
         $id = $_GET['id'];
 
       }
-
       switch($id){
         case 'register':
           include($register);
-          break;
+		  break;
 
         case 'signin':
           include($signin);

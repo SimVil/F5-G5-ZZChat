@@ -1,4 +1,3 @@
-
 /* -----------------------------------------------------------------------------
 Javascript file : aims to achieve some client-side dynamic
 validation before sending request for PHP server-side operations
@@ -34,3 +33,7 @@ function DynListen(elt){
 
     }
 };
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4c4c6620d5441c0030d2bd53165294a536c260aa

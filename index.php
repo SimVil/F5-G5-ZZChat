@@ -19,6 +19,23 @@ if(isset($_SESSION) && !empty($_SESSION)){
 		die();
 	}
 }
+if(!isset($_COOKIE['langzzchat']))
+{
+	$_COOKIE['langzzchat'] = "english";
+	include('./src/english.php');
+}
+if(isset($_GET['lg'])){
+	  $_COOKIE['langzzchat'] = $_GET['lg'] ;
+      }
+      switch($_COOKIE['langzzchat']){
+        case 'english':
+          include('./src/english.php');
+		  break;
+
+        case 'french':
+          include('./src/french.php');
+          break;
+}	
 
 session_destroy();
 
@@ -59,10 +76,16 @@ body marker :
   <div class="main">
 
     <nav class="navbar navbar-fixed-top">
-      <a class="navbar-brand" href="index.php?id=register"> Register </a>
-      <a class="navbar-brand" href="index.php?id=signin"> Sign-in </a>
-
+      <a class="navbar-brand" href="index.php?id=register&lg=<?php echo($_COOKIE['langzzchat']); ?>" > <?php echo($registerbar); ?></a>
+      <a class="navbar-brand" href="index.php?id=signin&lg=<?php echo($_COOKIE['langzzchat']); ?>"> <?php echo($signinbar); ?> </a>
     </nav>
+<<<<<<< HEAD
+=======
+    
+      
+
+    <!-- PHP inclusion script -->
+>>>>>>> 4c4c6620d5441c0030d2bd53165294a536c260aa
 
     <?php
 
@@ -75,11 +98,10 @@ body marker :
         $id = $_GET['id'];
 
       }
-
       switch($id){
         case 'register':
           include($register);
-          break;
+		  break;
 
         case 'signin':
           include($signin);

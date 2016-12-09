@@ -1,3 +1,21 @@
+
+<?php 
+/* --------------------------------------------------------------------
+ * FILE : register.php
+ * signin form, called in index.php
+ *
+ * Author : Amin, Simon
+ * ------------------------------------------------------------------ */
+
+?>
+
+</br>
+    </br>
+    </br>
+    </br>
+     <a href="index.php?lg=id=register&lg=english" > <input type="button" value="english"/> </a>
+      <a href="index.php?id=register&lg=french"> <input type="button" value="french" /> </a>
+
 <div class="container">
   <div class="row">
     <div class="col-md-12">

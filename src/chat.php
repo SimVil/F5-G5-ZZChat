@@ -1,23 +1,19 @@
 <?php
-
-/* ------------------------------------------------------------------ */
-/* FILE : chat.php
- * main file for presenting the app
- *
- * Author : Amin, Simon
- * ------------------------------------------------------------------ */
-
 include('functions.php');
 if(!isset($_SESSION)){
 	session_start();
 }
-
 $onlinefile = '../db/online.txt';
-
 if(empty($_SESSION) || !IsConnected($_SESSION['login'], $onlinefile)){
 	echo '<meta http-equiv="refresh" content="0;URL=../index.php">';
 	exit();
 }
+//include('functions.php');
+//session_start();
+//if(empty($_SESSION) || !IsConnected($_SESSION['login'])){
+//	echo '<meta http-equiv="refresh" content="0;URL=../index.php">';
+//	exit();
+//}
 ?>
 
 
@@ -26,7 +22,7 @@ if(empty($_SESSION) || !IsConnected($_SESSION['login'], $onlinefile)){
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Chat</title>
+    <title>ChatZZ2</title>
 		<link rel="stylesheet" href="../static/css/bootstrap.css">
 		<link rel="stylesheet" href="../static/css/stylesheet.css">
   	<link rel="stylesheet" href="../static/css/chatcss.css" type="text/css" />
@@ -37,33 +33,36 @@ if(empty($_SESSION) || !IsConnected($_SESSION['login'], $onlinefile)){
 
     <nav class="navbar navbar-fixed-top">
       <a class="navbar-brand" href="logout.php"> Log-out </a>
-      <a class="navbar-brand" href="#"> <?php echo $_SESSION['login'] ?></a>
+      <a class="navbar-brand" href="#"> <?php echo $_SESSION['login'] ; ?></a>
 
     </nav>
 
     <div id="page-wrap">
-
+	</br>
+	</br>
+		
         <h2>ZZ2 Chat</h2>
-
+        
         <p id="name-area"></p>
-
+        
         <div id="chat-wrap"><div id="chat-area"></div></div>
-
+        
         <form id="send-message-area">
             <p>Your message: </p>
-            <input id="sendie" maxlength = '100' >
+            <textarea id="sendie" maxlength = '100' ></textarea>
         </form>
         </br>
         </br>
 		<p id="onlineppl"> Connected People</p>
 		<div id="connected"> <p></p> </br>
 		</div>
+		
     </div>
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <script type="text/javascript" src="/~vilminsi/zzChat/static/js/chat.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script type="text/javascript" src="/~ahnahhas/static/js/chat.js"></script>
     <script type="text/javascript">
-
-
+    
+        
         var name = '<?php echo $_SESSION['login'] ; ?>';
         
         // display name on page

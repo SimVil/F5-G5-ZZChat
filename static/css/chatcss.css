@@ -1,7 +1,7 @@
 *                               { margin: 0; padding: 0; }
-body                            { font: 12px, Sans-Serif; background: url(../fonts/chatbg.jpeg); }
+body                            { font: 12px, Sans-Serif; background: url(../fonts/chatbg.jpg); }
 h2                              { color: #fa9f00; font: 30px Helvetica, Sans-Serif; margin: 0 0 10px 0; }
-#page-wrap                      { width: 500px; margin: 30px auto; position: relative; padding-top:5%; }
+#page-wrap                      { width: 500px; margin: 30px auto; position: relative; }
 
 #chat-wrap                      { border: 1px solid #eee; margin: 0 0 15px 0; }
 #chat-area                      { height: 300px; overflow: auto; border: 1px solid #666; padding: 20px; background: white; }
@@ -14,7 +14,8 @@ h2                              { color: #fa9f00; font: 30px Helvetica, Sans-Ser
 #send-message-area p            { float: left; color: white; padding-top: 27px; font-size: 14px; }
 #sendie                        { border: 3px solid #999; width: 360px; padding: 10px; font: 12px , Sans-Serif; float: right; }
 
+
+
+
 #connected 			{ height: 200px; bottom: 50 px;margin-left: 300px ; padding-top: 27px;overflow: auto; border: 1px solid #666; padding: 20px; background: white; }
 #onlineppl                     {  padding-top: 120px; padding-left:50;}
-
-

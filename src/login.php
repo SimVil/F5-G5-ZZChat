@@ -1,5 +1,13 @@
 <?php
 include('functions.php');
+$langzzchat = $_GET['lg'];
+if($langzzchat == 'english')
+{
+	include('english.php');
+}
+else{
+	include('french.php');
+}
 
 // testing existence of required data
 
@@ -30,13 +38,13 @@ $onlinefile = '../db/online.txt';
 // if action is signin -> check data and connect or reject
 // if action is register -> verify uniqueness of login and write in users.txt
 
-if($action == "Signin"){
+if($action == $signinbar){
   if(ValidUser($id, $pass, $usersfile) && !IsConnected($id, $onlinefile)){
     GetConnected($id, $onlinefile);
     if(!isset($_SESSION)){
 		session_start();
 	}
-    $langzzchat = $_GET['lg'];			
+    			
     $_SESSION['login'] = $id;
     $_SESSION['password'] = $pass;
     setcookie('login', $id, time() + 3600, '/', null, false, true);

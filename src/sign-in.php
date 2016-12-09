@@ -21,7 +21,7 @@
         </div>
 
         <div class="form-input-submit">
-          <input type="submit" name="action" id="submit" value="Signin"/>
+          <input type="submit" name="action" id="submit" value="<?php echo($signinbar); ?>"/>
 
         </div>
 

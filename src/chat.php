@@ -64,6 +64,7 @@ else{
         
         <form id="send-message-area">
             <p><?php echo($yourmessage) ; ?></p>
+	    <div id="toolbar"></div>
             <textarea id="sendie" maxlength = '100' ></textarea>
         </form>
         </br>

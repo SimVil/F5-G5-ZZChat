@@ -13,7 +13,7 @@
 	$file = fopen($filename, 'w');
 	if($file){
 		foreach($arr as $key => $value){
-			if($value !== "\n"){
+			if($value !== "" && $value !== "\n"){
 				fwrite($file, $value."\n");
 			}
 		}	

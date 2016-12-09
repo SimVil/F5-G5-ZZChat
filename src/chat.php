@@ -47,7 +47,7 @@ if(empty($_SESSION) || !IsConnected($_SESSION['login'])){
 		</div>
     </div>
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <script type="text/javascript" src="./static/js/chat.js"></script>
+    <script type="text/javascript" src="/~vilminsi/zzChat/static/js/chat.js"></script>
     <script type="text/javascript">
 
 

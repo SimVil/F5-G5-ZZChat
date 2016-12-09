@@ -64,8 +64,8 @@ else{
         
         <form id="send-message-area">
             <p><?php echo($yourmessage) ; ?></p>
-	    <div id="toolbar"></div>
-            <textarea id="sendie" maxlength = '100' ></textarea>
+	    <textarea id="sendie" maxlength = '100' ></textarea>
+	    <div id="toolbar"> Toolbar : <input type="button" value=" I " onclick="javascript:insertTag('[i]','[/i]','sendie')"/> <input type="button" value="  B  " onclick="javascript:insertTag('[b]','[/b]','sendie')"/></div>
         </form>
         </br>
         </br>
@@ -139,6 +139,49 @@ else{
 
 
         });
+
+
+	function insertTag(startTag, endTag, textareaId) {
+        var field  = document.getElementById(textareaId); 
+        var scroll = field.scrollTop;
+        field.focus();
+        
+        
+        if (window.ActiveXObject) {
+                var textRange = document.selection.createRange();            
+                var currentSelection = textRange.text;
+        } else {
+                var startSelection   = field.value.substring(0, field.selectionStart);
+                var currentSelection = field.value.substring(field.selectionStart, field.selectionEnd);
+                var endSelection     = field.value.substring(field.selectionEnd);               
+        }
+	if (window.ActiveXObject) {
+
+                textRange.text = startTag + currentSelection + endTag;
+
+                textRange.moveStart("character", -endTag.length - currentSelection.length);
+
+                textRange.moveEnd("character", -endTag.length);
+
+                textRange.select();     
+
+        } else {
+
+                field.value = startSelection + startTag + currentSelection + endTag + endSelection;
+
+                field.focus();
+
+                field.setSelectionRange(startSelection.length + startTag.length, startSelection.length + startTag.length + currentSelection.length);
+
+        } 
+
+
+        field.scrollTop = scroll;     
+
+}
+
+
+	
     </script>
 
 </body>

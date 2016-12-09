@@ -218,8 +218,8 @@ function smileys($text) {
  * ------------------------------------------------------------------ */
 
 function checkVarReg($var){
-	$pattern = '/^(?=.*[a-z])[0-9A-Za-z]{5,15}/$';
-	return (preg_match($pattern, $var);
+	$pattern = '/^[0-9A-Za-z]{5,15}$/';
+	return preg_match($pattern, $var);
 	
 	
 }

@@ -53,14 +53,16 @@ if($action == "Signin"){
 
 } else {
 
-  if(!ExistUser($id, $usersfile)){
+  if(checkVarReg($pass) && checkVarReg($id) && ExistUser($id, $usersfile)){
     EncodeUser($id, $pass, $usersfile);
+ 
     echo '<meta http-equiv="refresh" content="0;URL=../index.php?id=signin&err=regv">';
 
   } else {
 
     echo '<meta http-equiv="refresh" content="0;URL=../index.php?id=register&err=regerr">';
   }
+  
 }
 
 ?>

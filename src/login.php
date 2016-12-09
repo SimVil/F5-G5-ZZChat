@@ -32,17 +32,16 @@ $usersfile = '../db/users.txt';
 if($action == "Signin"){
   if(ValidUser($id, $pass, $usersfile) && !IsConnected($id)){
     GetConnected($id);
-    if(!empty($_SESSION)){
-		session_destroy();
-	}
-	session_start();
+	  session_start();
     $_SESSION['login'] = $id;
     $_SESSION['password'] = $pass;
     echo '<meta http-equiv="refresh" content="0;URL=chat.php">';
+    print_r($_SESSION);
+    echo "pouet";
     exit();
 
   } else {
-    echo '<meta http-equiv="refresh" content="0;URL=../index.php">';
+    echo '<meta http-equiv="refresh" content="0;URL=../index.php?id=signin&err=signerr">';
     exit();
     // incorporer valeur d'erreur.
     // pouet
@@ -54,13 +53,13 @@ if($action == "Signin"){
   if(!ExistUser($id, $usersfile)){
     $r = EncodeUser($id, $pass, $usersfile);
     echo $r;
-    echo '<meta http-equiv="refresh" content="0;URL=../index.php?id=signin">';
+    echo '<meta http-equiv="refresh" content="0;URL=../index.php?id=signin&err=regv">';
     // incorporer message succes.
     //echo "ouahou ca marhce";
 
   } else {
     //echo "t'existe banane;";
-    echo '<meta http-equiv="refresh" content="0;URL=../index.php?id=register">';
+    echo '<meta http-equiv="refresh" content="0;URL=../index.php?id=register&err=regerr">';
   }
 }
 

@@ -1,4 +1,5 @@
 var state = 0;
+var online = 0;
 
 
 
@@ -24,6 +25,7 @@ function getStateOfChat(){
 			   success: function(data){
 			   	
 				   state = data.state;
+				   online = data.onlinepeople;
 				},
 			});
 }
@@ -33,7 +35,7 @@ function getStateOfChat(){
 function updateChat(){
 	 	     $.ajax({
 			   type: "POST",
-			   url: "process.php",
+			   url: "../../src/process.php",
 			   data: {  
 			   			'function': 'update',
 						'state': state,
@@ -60,7 +62,7 @@ function sendChat(message, nickname)
     updateChat();
      $.ajax({
 		   type: "POST",
-		   url: "process.php",
+		   url: "../../src/process.php",
 		   data: {  
 		   			'function': 'send',
 					'message': message,
@@ -74,11 +76,12 @@ function sendChat(message, nickname)
 		});
 }
 
+
 //Who the hell is freaking online
 function updateConnected() {
     $.ajax({
 		   type: "POST",
-		   url: "process.php",
+		   url: "../../src/process.php",
 		   data: {  
 		   			'function': 'getonline',
 					'online' : online,
@@ -87,7 +90,8 @@ function updateConnected() {
 		   dataType: "json",
 		   success: function(data){
 			   if(data.connected){
-						for (var i = (data.connected.length - data.diff) ; i < data.connected.length; i++) {
+			    document.getElementById('connected').innerHTML = '';
+			    for (var i = 0 ; i < data.connected.length ; i++) {
                             $('#connected').append($("<p>"+ data.connected[i] +"</p>"));
                         }								  
 				   }
@@ -99,5 +103,4 @@ function updateConnected() {
 		});
 		setTimeout(updateConnected, 1500);
 }
-
 

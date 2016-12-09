@@ -36,7 +36,7 @@ if($action == "Signin"){
     if(!isset($_SESSION)){
 		session_start();
 	}
-			
+    			
     $_SESSION['login'] = $id;
     $_SESSION['password'] = $pass;
     setcookie('login', $id, time() + 3600, '/', null, false, true);
@@ -53,7 +53,7 @@ if($action == "Signin"){
 
 } else {
 
-  if(checkVarReg($pass) && checkVarReg($id) && ExistUser($id, $usersfile)){
+  if(checkVarReg($pass) && checkVarReg($id) && !ExistUser($id, $usersfile)){
     EncodeUser($id, $pass, $usersfile);
  
     echo '<meta http-equiv="refresh" content="0;URL=../index.php?id=signin&err=regv">';

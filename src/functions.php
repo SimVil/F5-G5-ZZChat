@@ -92,6 +92,13 @@ function IsConnected($log, $filename){
 
 
 
+/* -------- ReadOnlineArray ----------------------------------------- */
+/* Input  : a filename
+ * Output : an array containing online users
+ *
+ * Get the list of online users.
+ * ------------------------------------------------------------------ */
+
 function ReadOnlineArray($filename){
 	$data = file_get_contents($filename, false, NULL);
 	$arr = NULL;
@@ -163,6 +170,14 @@ function EncodeUser($log, $pwd, $filename){
 
 
 
+
+/* -------- array_find ---------------------------------------------- */
+/* Input  : an bi-dimensionnal array, a value to find
+ * Output : true for success, false for fail.
+ *
+ * Find a value (or not) into an array.
+ * ------------------------------------------------------------------ */
+
 function array_find($arr, $var){
 	$count = count($arr);
 	$i = 0;
@@ -174,6 +189,7 @@ function array_find($arr, $var){
 	
 	return $found;
 }
+
 
 
 /* -------- smileys ------------------------------------------------- */
@@ -191,6 +207,23 @@ function smileys($text) {
     }
   return $text ;
 }
+
+
+
+/* -------- checkVarReg --------------------------------------------- */
+/* Input  : a variable to be checked
+ * Output : true of false according to the result
+ *
+ * try to match $var with a given pattern.
+ * ------------------------------------------------------------------ */
+
+function checkVarReg($var){
+	$pattern = '/^[0-9A-Za-z]{5,15}$/';
+	return preg_match($pattern, $var);
+	
+	
+}
+
 
  ?>
 

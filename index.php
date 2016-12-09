@@ -17,7 +17,7 @@ if(!isset($_SESSION)){
 
 if(isset($_SESSION) && !empty($_SESSION)){
 	if(isset($_SESSION['login']) && IsConnected($_SESSION['login'], './db/online.txt')){
-		 echo '<meta http-equiv="refresh" content="0;URL=src/chat.php">';
+		echo '<meta http-equiv="refresh" content="0;URL=src/chat.php">';
 		die();
 	}
 }
@@ -60,20 +60,11 @@ body marker :
 <body>
   <div class="main">
 
-    <!-- Navigation bar -->
-    <!-- to be improved : get 'a' tags into a list -->
-    <!-- beware of css modifications -->
-
-
     <nav class="navbar navbar-fixed-top">
       <a class="navbar-brand" href="index.php?id=register"> Register </a>
       <a class="navbar-brand" href="index.php?id=signin"> Sign-in </a>
 
     </nav>
-
-
-
-    <!-- PHP inclusion script -->
 
     <?php
 

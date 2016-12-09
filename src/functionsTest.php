@@ -131,13 +131,7 @@ class FunctionsTest extends \PHPUnit_Framework_TestCase
 	
 	
 	public function testReadOnlineArray1(){
-		$list = "jezabel"."\n"."Neige"."\n"."Aurore";
-		$file = "file.txt";
-		touch($file);
-		$fp = fopen($file, 'w');
-		fwrite($fp, $list);
-		fclose($fp);
-		
+		$file = file_writing();
 		$this->assertNotNull(ReadOnlineArray($file));
 		unlink($file);
 		
@@ -163,7 +157,7 @@ class FunctionsTest extends \PHPUnit_Framework_TestCase
 	
 	public function testarray_find1(){
 		$it1 = array("login" => "Jezabel", "pass" => "david");
-		$it2 = array("login" => "Halcyon", "pass" => "david");
+		$it2 = array("login" => "Halcyon", "pass" => "davidon");
 		
 		$arr[] = $it1;
 		array_push($arr, $it2);
@@ -207,16 +201,48 @@ class FunctionsTest extends \PHPUnit_Framework_TestCase
 		
 	}
 	
-	public function testIsConnected1(){}
+	public function testIsConnected1(){
+		$file = file_writing();
+		
+		$this->assertEquals(true, IsConnected("jezabel", $file));
+		$this->assertEquals(false, IsConnected("Emily", $file));
+		
+		unlink($file);
+	}
 	
-	public function testIsConnected2(){}
 	
-	public function testGetConnected1(){}
+	/**
+    * @expectedException PHPUnit_Framework_Error_Warning
+    */
+	public function testIsConnected2(){
+		IsConnected("jezabel", "file.txt");
+	}
 	
-	public function testGetConnected2(){}
+	
+	
+	public function testGetConnected1(){
+		$file = file_writing();
+		
+		$this->assertEquals(false, GetConnected("jezabel", $file));
+		$this->assertEquals(true, GetConnected("cocteau twins", $file));
+		
+		unlink($file);
+	}
 		
 
 }
 
+
+// this is just a function to avoid code duplication. It is
+// only used in this file to get a suitable context for tests
+function file_writing(){
+		$list = "jezabel"."\n"."Neige"."\n"."Aurore";
+		$file = "file.txt";
+		touch($file);
+		$fp = fopen($file, 'w');
+		fwrite($fp, $list);
+		fclose($fp);
+		return $file;
+}
 
  ?>

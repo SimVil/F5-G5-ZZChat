@@ -39,6 +39,8 @@ if($action == "Signin"){
 			
     $_SESSION['login'] = $id;
     $_SESSION['password'] = $pass;
+    setcookie('login', $id, time() + 3600, '/', null, false, true);
+    
     echo '<meta http-equiv="refresh" content="0;URL=chat.php">';
     exit();
 

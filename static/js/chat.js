@@ -16,7 +16,7 @@ function getStateOfChat(){
 
 			 $.ajax({
 			   type: "POST",
-			   url: "process.php",
+			   url: "/~ahnahhas/src/process.php",
 			   data: {  
 			   			'function': 'getState',
 					},

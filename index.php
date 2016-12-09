@@ -23,7 +23,7 @@ if(isset($_SESSION) && !empty($_SESSION)){
 }
 if(!isset($_COOKIE['langzzchat']))
 {
-	setcookie('langzzchat',$ip,time()+365*24*3600, "/", "/~ahnahhas/src/chat.php", 0);
+	$_COOKIE['langzzchat'] = 'english';
 	include('./src/english.php');
 }
 if(isset($_GET['lg'])){

@@ -36,12 +36,12 @@ if($action == "Signin"){
     if(!isset($_SESSION)){
 		session_start();
 	}
-    			
+    $langzzchat = $_GET['lg'];			
     $_SESSION['login'] = $id;
     $_SESSION['password'] = $pass;
     setcookie('login', $id, time() + 3600, '/', null, false, true);
     
-    echo '<meta http-equiv="refresh" content="0;URL=chat.php">';
+    echo '<meta http-equiv="refresh" content="0;URL=chat.php?lg='.$langzzchat.'">';
     exit();
 
   } else {

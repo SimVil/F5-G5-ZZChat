@@ -13,14 +13,15 @@ if(empty($_SESSION) || !IsConnected($_SESSION['login'], $onlinefile)){
 	exit();
 }
 
-if($_COOKIE['langzzchat'] == 'english')
+
+if($_GET['lg'] == 'english')
 {
 	
 	include('english.php');
 	 
 }
 else{
-       if($_COOKIE['langzzchat'] == 'french')
+       if($_GET['lg'] == 'french')
        {
        include('french.php');
        }

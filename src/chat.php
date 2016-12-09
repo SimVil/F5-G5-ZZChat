@@ -1,7 +1,13 @@
 <?php
+
 include('functions.php');
-session_start();
-if(empty($_SESSION) || !IsConnected($_SESSION['login'])){
+if(!isset($_SESSION)){
+	session_start();
+}
+
+$onlinefile = '../db/online.txt';
+
+if(empty($_SESSION) || !IsConnected($_SESSION['login'], $onlinefile)){
 	echo '<meta http-equiv="refresh" content="0;URL=../index.php">';
 	exit();
 }
@@ -47,7 +53,7 @@ if(empty($_SESSION) || !IsConnected($_SESSION['login'])){
 		</div>
     </div>
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <script type="text/javascript" src="/~vilminsi/zzChat/static/js/chat.js"></script>
+    <script type="text/javascript" src="/~ahnahhas/static/js/chat.js"></script>
     <script type="text/javascript">
 
 

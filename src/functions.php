@@ -71,14 +71,14 @@ function ValidUser($log, $pwd, $filename){
 
 
 /* -------- IsConnected --------------------------------------------- */
-/* Input  : a login
+/* Input  : a login, a filename
  * Output : true if the user is connected, false if not.
  *
  * Test if a user si connected or not.
  * ------------------------------------------------------------------ */
 
-function IsConnected($log){
-  $arr = ReadOnlineArray('../db/online.txt');
+function IsConnected($log, $filename){
+  $arr = ReadOnlineArray($filename);
   $result = false;
 
   if($arr){
@@ -93,7 +93,7 @@ function IsConnected($log){
 
 
 function ReadOnlineArray($filename){
-	$data = file_get_contents('../db/online.txt', false, NULL);
+	$data = file_get_contents($filename, false, NULL);
 	$arr = NULL;
 	
 	if($data){
@@ -106,19 +106,19 @@ function ReadOnlineArray($filename){
 
 
 /* -------- GetConnected -------------------------------------------- */
-/* Input  : a login
+/* Input  : a login, a filename
  * Output : true if connection succeeded, false otherwise.
  *
  * Get an user connected, if it is not already.
  * ------------------------------------------------------------------ */
 
-function GetConnected($log){
-  $filename = fopen('../db/online.txt', 'a');
+function GetConnected($log, $filename){
+  $file = fopen($filename, 'a');
   $result = false;
 
-  if($filename && !IsConnected($log)){
-    fwrite($filename, $log."\n");
-    fclose($filename);
+  if($file && !IsConnected($log, $filename)){
+    fwrite($file, $log."\n");
+    fclose($file);
     $result = true;
 
   }

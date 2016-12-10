@@ -23,15 +23,12 @@ if(empty($_SESSION) || !IsConnected($_SESSION['login'], $onlinefile)){
 
 //gets the langage sent via the GET methode and include the right php file
 //the langage is chosen in the index and is english by default
-if($_GET['lg'] == 'english')
+if($_GET['lg'] == 'french')
 {
-	include('english.php');
+	include('french.php');
 }
 else{
-       if($_GET['lg'] == 'french')
-       {
-       include('french.php');
-       }
+        include('english.php');
 }
 
 

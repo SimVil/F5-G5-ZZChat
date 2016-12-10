@@ -1,3 +1,6 @@
+<?php
+
+
 /* --------------------------------------------------------------------
  * FILE : process.php
  * Gets the Ajax requests and treats them according to the function
@@ -6,9 +9,6 @@
  * ------------------------------------------------------------------ */
 
 
-
-<?php
-        
     include("functions.php");  
 
     $function = $_POST['function'];

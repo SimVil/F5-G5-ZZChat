@@ -1,9 +1,0 @@
-#do not display .php files
-IndexIgnore ./src/*
-
-
-#protect the .htaccess file
-<Files .htaccess>
-Order Allow,Deny
-Deny from all
-</Files>

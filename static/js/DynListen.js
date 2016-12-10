@@ -1,22 +1,21 @@
-/* -----------------------------------------------------------------------------
-Javascript file : aims to achieve some client-side dynamic
-validation before sending request for PHP server-side operations
-
-*/
-
-// -------------------------------------------------------------------------
-// functions for listening inputs
+/* --------------------------------------------------------------------
+ * FILE : Dynlisten.js
+ * contains functions for form listener
+ *
+ * Author : Amin, Simon
+ * ------------------------------------------------------------------ */
 
 
 
-/* DynListen  --------------------------------------------------------------
-/    Stands for checking login validations. Return testing value (true or
-/  false). A given login can contain letters (lower/uppercase), numbers and
-/  "-".
-/
-/  Parameters
-/    - elt : login to be verified.
-/ --------------- */
+/* -------- DynListen --------------------------------------------- */
+/* Input  : an element to listen
+ * Output : true if elt matches a regex, false otherwise.
+ *
+ * Listen an elt to check whether its value matches a regular
+ * expression or not. The value must be 5 to 15 char longs, and
+ * may only contain letters or numbers.
+ * ---------------------------------------------------------------- */
+
 function DynListen(elt){
     var regex = new RegExp("^[a-zA-Z0-9]{5,15}$")
     elt.className = "valid";
@@ -33,4 +32,3 @@ function DynListen(elt){
 
     }
 };
-

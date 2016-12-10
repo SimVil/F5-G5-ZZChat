@@ -102,11 +102,11 @@ function IsConnected($log, $filename){
 function ReadOnlineArray($filename){
 	$data = file_get_contents($filename, false, NULL);
 	$arr = NULL;
-	
+
 	if($data){
-		$arr = explode("\n", $data);
+		$arr = explode("\n", $data); //splitting $arr on \n
 	}
-	
+
 	return $arr;
 }
 
@@ -149,17 +149,18 @@ function EncodeUser($log, $pwd, $filename){
   $coded_pwd = hash("sha256", "$pwd");
   $item = array("login" => "$log", "pass" => "$coded_pwd");
 
+  // either arr is empty --> just initialize it with $item
+  // either it is not    --> pushing new encoded - hashed $item
   if(!$arr){
     $arr[] = $item;
     $result = true;
 
   } else {
-  	//if(array_search($log, array_column($arr, 'login')) === false){
   	if(array_find($arr, $log) === false){
   		array_push($arr, $item);
   		$result = true;
 
-  	}   
+  	}
   }
 
   $json_arr = json_encode($arr);
@@ -182,11 +183,12 @@ function array_find($arr, $var){
 	$count = count($arr);
 	$i = 0;
 	$found = false;
+
 	while($i < $count && $found === false){
 		$found = array_search($var, $arr[$i]);
 		$i = $i + 1;
 	}
-	
+
 	return $found;
 }
 
@@ -197,6 +199,8 @@ function array_find($arr, $var){
  * Output : the text with replaced smileys
  *
  * Given a text, replace each occurence of a smiley with a real one.
+ * We use matching index to link a given smiley to its representation
+ * picture.
  * ------------------------------------------------------------------ */
 
 function smileys($text) {
@@ -214,17 +218,16 @@ function smileys($text) {
 /* Input  : a variable to be checked
  * Output : true of false according to the result
  *
- * try to match $var with a given pattern.
+ * try to match $var with a given pattern. $var must be between 5 and
+ * 15 char long, and may only contains numbers and letters.
  * ------------------------------------------------------------------ */
 
 function checkVarReg($var){
 	$pattern = '/^[0-9A-Za-z]{5,15}$/';
 	return preg_match($pattern, $var);
-	
-	
+
+
 }
 
 
  ?>
-
-
